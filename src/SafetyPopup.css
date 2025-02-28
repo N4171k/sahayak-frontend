@@ -1,0 +1,64 @@
+/* src/components/SafetyPopup.css */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+  }
+  
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .popup-header h3 {
+    margin: 0;
+    color: #1E3A8A;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .popup-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .popup-content li {
+    padding: 8px 0;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .popup-content li:last-child {
+    border-bottom: none;
+  }
+  
+  .popup-content li::before {
+    content: "•";
+    color: #1E3A8A;
+    margin-right: 10px;
+  }
