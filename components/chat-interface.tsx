@@ -119,7 +119,7 @@ export function ChatInterface() {
       setMessages((prev) => [
         ...prev,
         {
-          text: "⚠️ Connection issue. Please try again later.",
+          text: "⚠️ Connection issue. Abhi kaam chalu hai Please try again later.",
           isUser: false,
         },
       ])
