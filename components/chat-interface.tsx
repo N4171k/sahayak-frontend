@@ -104,7 +104,7 @@ export function ChatInterface() {
     setInput("")
 
     try {
-      const response = await fetch("http://localhost:5800/api/chat", {
+      const response = await fetch("https://sahayak-backend-3soq.onrender.com/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage }),
