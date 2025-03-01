@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Sahayak - Your Safety Assistant",
   description:
     "A cutting-edge safety assistant application that seamlessly blends intelligent chat features with emergency services",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -28,3 +29,6 @@ export default function RootLayout({
   )
 }
 
+
+
+import './globals.css'
