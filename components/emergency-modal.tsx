@@ -37,15 +37,22 @@ export function EmergencyModal({ onClose, location }: EmergencyModalProps) {
     if (!location) return
 
     const locationText = `Emergency: I need help. My location is: https://maps.google.com/?q=${location.lat},${location.lng}`
-    navigator.clipboard.writeText(locationText).then(() => {
-      setCopied(true)
-      toast({
-        title: "Location Copied",
-        description: "Your location has been copied to clipboard.",
+    navigator.clipboard.writeText(locationText)
+      .then(() => {
+        setCopied(true)
+        toast({
+          title: "Location Copied",
+          description: "Your location has been copied to clipboard.",
+        })
+        setTimeout(() => setCopied(false), 2000)
       })
-
-      setTimeout(() => setCopied(false), 2000)
-    })
+      .catch(() => {
+        toast({
+          title: "Error",
+          description: "Failed to copy location. Please try again.",
+          variant: "destructive"
+        })
+      })
   }
 
   return (
@@ -76,7 +83,7 @@ export function EmergencyModal({ onClose, location }: EmergencyModalProps) {
 
           {location ? (
             <div className="p-4 bg-muted rounded-md">
-              <div className="flex justify-between items-start">
+              <div className="flex justify-between items-start gap-4 flex-wrap">
                 <div>
                   <p className="font-medium flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-primary" />
@@ -86,7 +93,12 @@ export function EmergencyModal({ onClose, location }: EmergencyModalProps) {
                     Lat: {location.lat.toFixed(6)}, Lng: {location.lng.toFixed(6)}
                   </p>
                 </div>
-                <Button variant="outline" size="sm" className="gap-1" onClick={copyLocation}>
+                <iframe 
+                  src={`https://maps.google.com/?q=${location.lat},${location.lng}&output=embed`} 
+                  className="w-full h-40 rounded-md mt-2 sm:mt-0 sm:w-64"
+                  title="Current Location"
+                />
+                <Button variant="outline" size="sm" className="gap-1 self-center" onClick={copyLocation}>
                   {copied ? (
                     <>
                       <Check className="h-4 w-4" />
@@ -95,7 +107,7 @@ export function EmergencyModal({ onClose, location }: EmergencyModalProps) {
                   ) : (
                     <>
                       <Copy className="h-4 w-4" />
-                      Copy
+                      Copy Location
                     </>
                   )}
                 </Button>
@@ -117,4 +129,3 @@ export function EmergencyModal({ onClose, location }: EmergencyModalProps) {
     </Dialog>
   )
 }
-
