@@ -104,7 +104,7 @@ export function ChatInterface() {
     setInput("")
 
     try {
-      const response = await fetch("http://localhost:5800/api/chat", {
+      const response = await fetch("https://sahayak-backend-3soq.onrender.com/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage }),
@@ -119,7 +119,7 @@ export function ChatInterface() {
       setMessages((prev) => [
         ...prev,
         {
-          text: "⚠️ Connection issue. Please try again later.",
+          text: "⚠️ Connection issue. Abhi kaam chalu hai Please try again later.",
           isUser: false,
         },
       ])
